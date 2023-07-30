@@ -17,11 +17,13 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     origin: "http://192.168.100.12:3000",
+//   })
+// );
+app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 
 const storage = multer.diskStorage({
@@ -46,6 +48,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
+
 // app.use("/api/confessions", confessionRoutes);
 
 app.listen(8800, () => {
