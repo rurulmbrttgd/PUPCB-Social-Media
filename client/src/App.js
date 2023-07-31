@@ -18,6 +18,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 function App() {
   const { currentUser } = useContext(AuthContext);

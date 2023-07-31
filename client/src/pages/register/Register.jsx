@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.scss";
 import axios from "axios";
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -30,6 +31,9 @@ const Register = () => {
 
   return (
     <div className="register">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="card">
         <div className="left">
           {/* <h1>Lama Social.</h1>

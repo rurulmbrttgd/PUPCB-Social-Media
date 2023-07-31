@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import "./login.scss";
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -29,6 +30,9 @@ const Login = () => {
   
   return (
     <div className="login">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="card">
         <div className="left">
         {/* <h1>Hello World.</h1>
