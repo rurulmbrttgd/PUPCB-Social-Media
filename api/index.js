@@ -52,6 +52,7 @@ app.use("/api/confessions", confessionRoutes);
 
 // app.use("/api/confessions", confessionRoutes);
 
-app.listen(8800, () => {
-  console.log("API working!");
+const port = process.env.PORT || 3000; // Use the PORT environment variable or 3000 if it's not set
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
