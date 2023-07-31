@@ -9,13 +9,19 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("http://localhost:8800/api/auth/login", inputs, {
+    try {
+    // const res = await axios.post("http://192.168.1.101:8800/api/auth/login", inputs, {
+      const res = await axios.post("http://localhost:8800/api/auth/login","http://192.168.1.101:8800/api/auth/login", inputs, {
+
       withCredentials: true,
     });
 
-    setCurrentUser(res.data)
-  };
-
+    setCurrentUser(res.data);
+  } catch (error) {
+    console.error("Error during login:", error);
+  }
+  
+}
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);

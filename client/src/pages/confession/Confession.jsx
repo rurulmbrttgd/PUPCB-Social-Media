@@ -1,27 +1,19 @@
-// import Stories from "../../components/stories/Stories"
-import Confessions from "../../components/confessions/confessions"
-// import Share from "../../components/share/Share"
-import "./confession.scss"
+import "./confession.scss";
+
+const Confession = ({ post }) => {
 
 
-const Confession = () => {
   return (
-    <div className='navbar'>
-        {/* <Navbar1 /> */}
-        <div className={styles.container}>
-            <div className='sidebar'>
-                {/* <Sidebar /> */}
-            </div>
-            <div className='container'>
-               
-                <Confessions />
-            </div>
-            <div className='right-side'>
-                {/* <People /> */}
-            </div>
+    <div className={`post ${post.note_design === 0 ? 'note-design-a' : post.note_design === 1 ?  'note-design-b' : post.note_design === 2  ?  'note-design-c' :''}`}>
+      <div className="container">
+        <div className="content">
+          <h3>{post.title}</h3>
+          <p>{post.confession}</p>
+          <p>-{`${post.anonymous === 0 ? post.name : 'Anonymous' }`}</p>
         </div>
+      </div>
     </div>
   );
-}
+};
 
-export default Confession
+export default Confession;

@@ -1,51 +1,16 @@
-import "./confess.scss";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Link } from "react-router-dom";
-// import Comments from "../comments/Comments";
-import { useState } from "react";
-import moment from "moment";
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
-import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import "./confession.scss";
 
-const Confession = ({confession }) => {
+const Confession = ({ post }) => {
 
-  // const { currentUser } = useContext(AuthContext);
-
-  // const { isLoading, error, data } = useQuery(["likes", confess.id], () =>
-  //   makeRequest.get("/likes?confessId=" + confess.id).then((res) => {
-  //     return res.data;
-  //   })
-  // );
-
-  // const queryClient = useQueryClient();
-  // const deleteMutation = useMutation(
-  //   (confessId) => {
-  //     return makeRequest.delete("/confess/" + confessId);
-  //   },
-  //   {
-  //     onSuccess: () => {
-  //       // Invalidate and refetch
-  //       queryClient.invalidateQueries(["confess"]);
-  //     },
-  //   }
-  // );
-  // const handleDelete = () => {
-  //   deleteMutation.mutate(confession.id);
-  // };
 
   return (
-    <div className="confess">
+    <div className={`post ${post.note_design === 0 ? 'note-design-a' : post.note_design === 1 ?  'note-design-b' : post.note_design === 2  ?  'note-design-c' :''}`}>
       <div className="container">
         <div className="content">
-          <p>{confession.confession}</p>
+          <h3>{post.title}</h3>
+          <p>{post.confession}</p>
+          <p>-{`${post.anonymous === 0 ? post.name : 'Anonymous' }`}</p>
         </div>
-        
       </div>
     </div>
   );

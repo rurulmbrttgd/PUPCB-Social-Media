@@ -12,7 +12,9 @@ export const getConfessions = (req, res) => {
 
     console.log(userId);
 
-    const q = `SELECT p.* FROM confessions AS p ORDER BY p.createdAt DESC`;
+    const q = //`SELECT p.* FROM confessions AS p ORDER BY p.createdAt DESC`;
+    `SELECT p.*, u.id AS userId, name FROM confessions AS p JOIN users AS u ON (u.id = p.userId)
+    ORDER BY p.createdAt DESC`;
     //     : `SELECT p.*, u.id AS userId, name, profilePic FROM confessions AS p JOIN users AS u ON (u.id = p.userId)
     // LEFT JOIN relationships AS r ON (p.userId = r.subscribingUserId) WHERE r.subscriberUserId= ? OR p.userId =?
     // ORDER BY p.createdAt DESC`;
@@ -35,11 +37,14 @@ export const addConfession = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
-      "INSERT INTO confessions(`confession`,`createdAt`, `userId`) VALUES (?)";
+      "INSERT INTO confessions(`confession`,`createdAt`, `userId`, `note_design`, `title`, `anonymous`) VALUES (?)";
     const values = [
       req.body.confession,
       moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
       userInfo.id,
+      req.body.selectedButton,
+      req.body.title,
+      req.body.anonymous,
     ];
 
     db.query(q, [values], (err, data) => {

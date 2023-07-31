@@ -1,4 +1,4 @@
-import Confession from "../confess/Confession";
+import Confession from "../confession/Confession";
 import "./confessions.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
@@ -16,7 +16,7 @@ const Confessions = ({userId}) => {
         ? "Something went wrong!"
         : isLoading
         ? "loading"
-        : data.map((confession) => <Confession confession={confession} key={confess.id} />)}
+        : data.map((confessions) => <Confession post={confessions} key={confessions.id} />)}
     </div>
   );
 };
